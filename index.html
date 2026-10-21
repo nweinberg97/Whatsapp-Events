@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Group Events: a WhatsApp feature concept</title>
+  <meta name="description" content="Group Events is an unofficial product concept for planning events, polls and reminders inside WhatsApp group chats. A product sense case study by Nitai Weinberg. Not affiliated with WhatsApp or Meta.">
+  <meta property="og:title" content="Group Events: a WhatsApp feature concept">
+  <meta property="og:description" content="Plan the event where your group already talks. An unofficial product sense case study by Nitai Weinberg.">
+  <meta property="og:image" content="screenshots/cover.png">
+  <meta name="theme-color" content="#008069">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23008069'/%3E%3Cg fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='8' y='9' width='16' height='15' rx='3'/%3E%3Cpath d='M12 7v4M20 7v4M8 14h16M12.5 18.5l2.3 2.2 4.7-4.4'/%3E%3C/g%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M8 3v4M16 3v4M3.5 10h17M8.5 14.5l2.3 2.2 4.7-4.4"/></svg></span>
+      <span><b>Group Events</b><small>An unofficial WhatsApp concept</small></span>
+    </a>
+    <nav aria-label="Sections">
+      <a href="#problem">Problem</a>
+      <a href="#who">Users</a>
+      <a href="#walkthrough">Walkthrough</a>
+      <a href="#rollout">Rollout</a>
+      <a class="nav-cta" href="https://github.com/nweinberg97/whatsapp-events">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Plan the event where your group already talks.</h1>
+        <p class="lede">Group Events is a concept feature for WhatsApp group chats. Create an event in a few taps, collect RSVPs and answers with polls, and let automatic reminders do the chasing.</p>
+        <div class="cta">
+          <a class="btn btn-fill" href="#walkthrough">Walk through the flow</a>
+          <a class="btn btn-line" href="#problem">Read the case study</a>
+        </div>
+        <div class="byline">
+          <span class="me" aria-hidden="true">NW</span>
+          <span><b>Nitai Weinberg</b>Product sense case study, not affiliated with WhatsApp</span>
+        </div>
+      </div>
+      <div class="stage">
+        <div class="ph" id="hero-phone" role="group" aria-label="Interactive prototype of Group Events"><div class="ph-screen"></div></div>
+        <div class="stage-note">
+          <span class="tap-hint"><i aria-hidden="true"></i>Tap the calendar icon to start</span>
+          <button type="button" id="hero-reset">Start over</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem -->
+  <section class="sec sec-tint" id="problem">
+    <div class="wrap">
+      <h2>Every club has someone stuck chasing replies</h2>
+      <p class="lede">Meet Anthony, president of a new student ocean sustainability club. Planning one panel event means a Google Form for dietary needs, a Sheet for tasks, a Doc for topic ideas and a Facebook event for RSVPs, plus a steady stream of nudges in the group chat to get people to fill them in.</p>
+
+      <div class="problem">
+        <figure class="nags" style="margin:0">
+          <div class="day">Monday</div>
+          <div class="nag"><span class="tool">Google Forms</span><br>Reminder to fill out the dietary form by Sunday 🙏<small>9:14 AM</small></div>
+          <div class="day">Tuesday</div>
+          <div class="nag"><span class="tool">Facebook Events</span><br>Please tap going on the event page by tonight so we can order food<small>6:02 PM</small></div>
+          <div class="day">Wednesday</div>
+          <div class="nag"><span class="tool">Google Docs</span><br>Who still needs edit access to the brainstorm doc?<small>12:47 PM</small></div>
+          <div class="day">Thursday</div>
+          <div class="nag"><span class="tool">Google Sheets</span><br>Last call!! 6 people still haven't updated the task sheet<small>10:31 PM</small></div>
+          <figcaption>Four tools, four nudges, one event.</figcaption>
+        </figure>
+
+        <div class="pains">
+          <div class="pain">
+            <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 7l6 6 4-4 8 8"/><path d="M21 11v6h-6"/></svg>Low response rates</h3>
+            <p>Every hop to another app loses people. Organizers end up guessing headcount, under-ordering food and missing allergies.</p>
+          </div>
+          <div class="pain">
+            <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/><path d="M14 6.5h3.5V10M10 17.5H6.5V14"/></svg>Tools that don't talk to each other</h3>
+            <p>Answers are scattered across forms, sheets and docs. Someone copies them back together, requests access and waits on everyone else.</p>
+          </div>
+          <div class="pain">
+            <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.6a8.4 8.4 0 0 1-12.4 7.4L3.5 20.5l1.5-4.4A8.4 8.4 0 1 1 20.5 11.6z"/><path d="M8 10h8M8 13.5h5"/></svg>Cluttered chats</h3>
+            <p>Follow-ups bury real conversation, and one person gets stuck as the group's nag.</p>
+          </div>
+          <div class="stakes"><b>Why it matters to WhatsApp</b>By the end of the week Anthony is wondering whether the club should just move to another app. When planning leaves the chat, the conversation follows. The north star metric at risk is daily active users.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who -->
+  <section class="sec" id="who">
+    <div class="wrap who">
+      <div>
+        <h2>Built for teams and clubs</h2>
+        <p class="lede">Social and collaborative group chats were segmented by size, then scored against four criteria. Work chats were left out, since those teams tend to live in Slack or Microsoft Teams.</p>
+        <ul class="criteria">
+          <li><b>Impact:</b> how much the problem hurts this group</li>
+          <li><b>Scale:</b> how many users have it</li>
+          <li><b>Frequency:</b> how often it comes up</li>
+          <li><b>Feasibility:</b> how practical a solution is to build soon</li>
+        </ul>
+      </div>
+      <div class="matrix-wrap">
+        <table class="matrix">
+          <caption class="sr">Decision matrix scoring each segment from 1 (low) to 3 (high)</caption>
+          <thead><tr><th scope="col">Segment</th><th scope="col">Impact</th><th scope="col">Scale</th><th scope="col">Frequency</th><th scope="col">Feasibility</th><th scope="col">Total</th></tr></thead>
+          <tbody>
+            <tr><th scope="row" class="seg"><b>Squads</b><span>3 to 15 people. Friends and family</span></th>
+              <td><span class="dots" aria-label="1 of 3"><i class="on"></i><i></i><i></i></span></td>
+              <td><span class="dots" aria-label="3 of 3"><i class="on"></i><i class="on"></i><i class="on"></i></span></td>
+              <td><span class="dots" aria-label="2 of 3"><i class="on"></i><i class="on"></i><i></i></span></td>
+              <td><span class="dots" aria-label="3 of 3"><i class="on"></i><i class="on"></i><i class="on"></i></span></td>
+              <td class="total">9</td></tr>
+            <tr class="win"><th scope="row" class="seg"><b>Teams &amp; clubs</b><span>15 to 50 people. Sports teams, student clubs</span></th>
+              <td><span class="dots" aria-label="3 of 3"><i class="on"></i><i class="on"></i><i class="on"></i></span></td>
+              <td><span class="dots" aria-label="2 of 3"><i class="on"></i><i class="on"></i><i></i></span></td>
+              <td><span class="dots" aria-label="3 of 3"><i class="on"></i><i class="on"></i><i class="on"></i></span></td>
+              <td><span class="dots" aria-label="2 of 3"><i class="on"></i><i class="on"></i><i></i></span></td>
+              <td class="total">10</td></tr>
+            <tr><th scope="row" class="seg"><b>Community connectors</b><span>50+ people. Pick-up leagues, open communities</span></th>
+              <td><span class="dots" aria-label="2 of 3"><i class="on"></i><i class="on"></i><i></i></span></td>
+              <td><span class="dots" aria-label="1 of 3"><i class="on"></i><i></i><i></i></span></td>
+              <td><span class="dots" aria-label="2 of 3"><i class="on"></i><i class="on"></i><i></i></span></td>
+              <td><span class="dots" aria-label="2 of 3"><i class="on"></i><i class="on"></i><i></i></span></td>
+              <td class="total">7</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="pillars">
+        <div class="pillar"><span class="need">Automate the annoying tasks</span><h3>Reminders that follow up for you</h3><p>Scheduled reminders and automatic nudges to non-responders replace the admin's daily chase.</p></div>
+        <div class="pillar"><span class="need">Reduce extra work</span><h3>Events that live in the chat</h3><p>Details, RSVPs and decisions sit in one place inside the group, not across four other apps.</p></div>
+        <div class="pillar"><span class="need">Keep it quick and easy</span><h3>Polls attached to the event</h3><p>Rides, food and set-up questions get answered in a tap, with results everyone can see.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Walkthrough -->
+  <section class="sec sec-tint" id="walkthrough">
+    <div class="wrap">
+      <h2>The flow, screen by screen</h2>
+      <p class="lede">Scroll to step through how Anthony's club plans its first panel. The phone is a working prototype, so tap anything.</p>
+      <div class="walk">
+        <ol class="steps" id="steps"></ol>
+        <div class="walk-stage">
+          <div class="ph" id="walk-phone" role="group" aria-label="Prototype synced to the walkthrough"><div class="ph-screen"></div></div>
+          <p class="walk-cap" id="walk-cap" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="sec" id="screens" style="padding-bottom:72px">
+    <div class="wrap">
+      <h2>Every screen</h2>
+      <p class="lede">All 18 screens in order. Select one to jump to it in the walkthrough.</p>
+    </div>
+    <div class="gal" id="gallery"></div>
+  </section>
+
+  <!-- Competitors -->
+  <section class="sec sec-tint" id="landscape">
+    <div class="wrap comp-grid">
+      <div>
+        <h2>Borrow the jobs, not the clutter</h2>
+        <div class="notes">
+          <p><b>Facebook</b> has events, group pages and polls, but so many tools and notifications that it can feel overwhelming.</p>
+          <p><b>Discord</b> has sub-threads and bots that automate tasks. They fit the pain points on paper, but would make WhatsApp feel cluttered and less personal.</p>
+          <p>People choose WhatsApp because it's simple, quick and personal. Group Events adds the event and poll jobs teams need while leaving threads and bots out on purpose.</p>
+        </div>
+      </div>
+      <div class="comp-wrap">
+        <table class="comp">
+          <caption class="sr">Collaboration features by app, as assessed in the original proposal</caption>
+          <thead><tr><th scope="col">Feature</th><th scope="col">Snapchat</th><th scope="col">Facebook</th><th scope="col">Instagram</th><th scope="col">Discord</th><th scope="col">WhatsApp</th><th scope="col" class="us">With Group Events</th></tr></thead>
+          <tbody id="comp-body"></tbody>
+        </table>
+        <p class="comp-note">Feature comparison as assessed in the original proposal, February 2023.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rollout -->
+  <section class="sec" id="rollout">
+    <div class="wrap">
+      <h2>Shipping it</h2>
+      <p class="lede">Launch in Australia, in English, with teams and clubs as the beta cohort. Expand to other regions and languages once it proves itself.</p>
+      <ol class="roll">
+        <li><h3>Plan</h3><p>Scope the work with back-end, front-end and design, and recruit beta testers from clubs and teams.</p></li>
+        <li><h3>Build the MVP</h3><p>Ship the foundations in agile sprints toward a set beta date.</p></li>
+        <li><h3>Iterate</h3><p>Fold beta feedback into a more mature version, until it's ready for all of Australia.</p></li>
+        <li><h3>Evaluate</h3><p>Measure against the metrics below and talk to the groups using it.</p></li>
+        <li><h3>Scale</h3><p>If it works, make the case to leadership for an international rollout.</p></li>
+      </ol>
+      <div class="metrics">
+        <p class="nsm"><b>North star: daily active users</b>Keeping planning inside the chat should lift engagement and retention in group chats.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.2l2.7 5.6 6.1.8-4.5 4.2 1.1 6.1L12 17l-5.4 2.9 1.1-6.1-4.5-4.2 6.1-.8z"/></svg>Positive ratings from post-event feedback</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M8 3v4M16 3v4M3.5 10h17"/></svg>Events created per group</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 20V11M12 20V4.5M19 20v-6"/></svg>Response rates on polls and RSVPs</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3l3 3-3 3"/><path d="M4 11V9.5A3.5 3.5 0 0 1 7.5 6H20M7 21l-3-3 3-3"/><path d="M20 13v1.5a3.5 3.5 0 0 1-3.5 3.5H4"/></svg>Retention of Australian group chat users</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <h2>Group Events</h2>
+      <p>A product sense case study by Nitai Weinberg: segmenting users, picking a problem worth solving, and designing a feature that fits the product it lives in.</p>
+      <p><a href="https://github.com/nweinberg97/whatsapp-events">View the source on GitHub</a></p>
+    </div>
+    <div class="disclaimer" role="note">
+      <b>Not affiliated with WhatsApp</b>
+      This is an independent, unofficial concept made for fun as a portfolio piece. It is not affiliated with, endorsed by or sponsored by WhatsApp or Meta Platforms, Inc., and it isn't a real or planned feature. WhatsApp is a trademark of Meta Platforms, Inc. All people, groups and messages in the prototype are fictional.
+    </div>
+    <p class="fine">© <span id="year">2026</span> Nitai Weinberg. Concept, research and wireframes by Nitai Weinberg.</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+<script src="main.js"></script>
+<script>
+  // Competitor table (from the proposal's analysis)
+  (() => {
+    const Y = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Yes"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+    const N = '<span class="no" aria-label="No">–</span>';
+    const rows = [
+      ['Events',      0,1,0,0,0,1],
+      ['Group chats', 1,1,1,1,1,1],
+      ['Sub-threads', 0,0,0,1,0,'Left out'],
+      ['Messaging',   1,1,1,1,1,1],
+      ['Audio/video', 1,1,1,1,1,1],
+      ['Bots',        0,0,0,1,0,'Left out'],
+      ['Polls',       0,1,0,1,1,1],
+      ['Group pages', 0,1,0,0,0,0],
+    ];
+    document.getElementById('comp-body').innerHTML = rows.map(([f, ...v]) =>
+      `<tr><th scope="row">${f}</th>${v.map((x, i) => `<td class="${i === 5 ? 'us' : ''}">${typeof x === 'string' ? `<span class="skip">${x}</span>` : x ? Y : N}</td>`).join('')}</tr>`).join('');
+  })();
+</script>
+</body>
+</html>
