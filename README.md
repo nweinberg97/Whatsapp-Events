@@ -37,7 +37,7 @@ python3 -m http.server 8000
 
 1. Go to **Settings → Pages** in this repo.
 2. Under **Build and deployment**, set **Source** to *Deploy from a branch*, choose **main** and **/ (root)**, and save.
-3. The site appears at `https://nweinberg97.github.io/whatsapp-events/` after a minute or two.
+3. The site appears at `https://nweinberg97.github.io/Whatsapp-Events/` after a minute or two.
 
 ## Files
 
